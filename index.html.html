@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ARTIST NAME · Guitarrista en Medellín</title>
+<meta name="description" content="Guitarrista en vivo desde Medellín, Colombia. Serenatas, matrimonios, eventos privados y corporativos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@300;400;500;600&display=swap">
+<style>
+:root{--ink:#101010;--ivory:#F4F0E8;--sand:#C8B99F;--smoke:#777777;--serif:"Cormorant Garamond",Georgia,serif;--sans:Manrope,system-ui,sans-serif;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--ink);color:var(--ivory);font-family:var(--sans);font-weight:300;line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--sand);outline-offset:3px}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.08;margin:0}
+h2{font-size:clamp(2rem,5vw,3.6rem);max-width:18ch;letter-spacing:.01em}
+section{padding:clamp(4.5rem,11vw,9rem) clamp(1.25rem,5vw,4rem);max-width:1300px;margin:0 auto}
+.muted{color:var(--smoke)}
+.btn{display:inline-block;font:500 .75rem var(--sans);letter-spacing:.16em;padding:1rem 1.8rem;border:1px solid var(--sand);color:var(--ivory);background:transparent;cursor:pointer;transition:background .3s,color .3s}
+.btn:hover{background:var(--sand);color:var(--ink)}
+.btn.solid{background:var(--ivory);color:var(--ink);border-color:var(--ivory)}
+.btn.solid:hover{background:var(--sand);border-color:var(--sand)}
+.ph{background:linear-gradient(135deg,#1c1a17,#2a2620);border:1px solid #2c2a26;display:flex;align-items:flex-end;padding:.8rem;font-size:.7rem;color:var(--smoke);letter-spacing:.08em}
+/* nav */
+header{position:fixed;inset:0 0 auto;z-index:50;padding:calc(1.1rem + env(safe-area-inset-top,0px)) clamp(1.25rem,4vw,3rem) 1.1rem;display:flex;align-items:center;justify-content:space-between;transition:background .4s}
+header.solid{background:rgba(16,16,16,.92);backdrop-filter:blur(8px)}
+.logo{font-family:var(--serif);font-size:1.45rem;letter-spacing:.14em;font-weight:600}
+nav{display:flex;gap:2rem;align-items:center;font-size:.78rem;letter-spacing:.12em}
+nav a:not(.btn){opacity:.8;transition:opacity .3s}nav a:hover{opacity:1}
+nav .btn{padding:.65rem 1.2rem}
+#burger{display:none;background:none;border:0;color:var(--ivory);font-size:1.6rem;cursor:pointer}
+@media(max-width:860px){#burger{display:block}
+nav{position:fixed;inset:0;background:var(--ink);flex-direction:column;justify-content:center;font-size:1.1rem;gap:1.6rem;transform:translateY(-100%);transition:transform .5s;visibility:hidden}
+nav.open{transform:none;visibility:visible}#burger{position:relative;z-index:60}}
+/* hero */
+#hero{position:relative;height:100vh;height:100svh;max-width:none;padding:0;display:grid;place-items:center;text-align:center;overflow:hidden;background:radial-gradient(ellipse at 30% 40%,#2b2620,#101010 70%)}
+#hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 2s}
+#hero video.on{opacity:1}
+#hero::after{content:"";position:absolute;inset:0;background:linear-gradient(rgba(16,16,16,.55),rgba(16,16,16,.25) 45%,rgba(16,16,16,.8))}
+.hero-in{position:relative;z-index:2;padding:0 1.25rem;max-width:900px}
+.hero-in h1{font-size:clamp(2.6rem,8vw,6.2rem);font-style:italic;font-weight:400}
+.hero-in p{font-size:clamp(.95rem,2vw,1.15rem);color:var(--sand);margin:1.4rem 0 2.4rem}
+.hero-in .btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.hero-foot{position:absolute;z-index:2;bottom:calc(1.5rem + env(safe-area-inset-bottom,0px));left:0;right:0;display:flex;justify-content:space-between;align-items:center;padding:0 clamp(1.25rem,4vw,3rem);font-size:.7rem;letter-spacing:.2em}
+.scroll{width:1px;height:44px;background:linear-gradient(var(--sand),transparent);animation:drop 2.2s infinite}
+@keyframes drop{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+.intro>*{opacity:0;transform:translateY(18px);animation:in 1.4s forwards}
+.intro h1{animation-delay:.4s}.intro p{animation-delay:.9s}.intro .btns{animation-delay:1.3s}
+@keyframes in{to{opacity:1;transform:none}}
+/* music toggle */
+#amb{display:flex;align-items:center;gap:.7rem;background:none;border:0;color:var(--ivory);font:500 .7rem var(--sans);letter-spacing:.18em;cursor:pointer}
+.eq{display:flex;gap:2px;align-items:flex-end;height:14px}.eq i{width:2px;height:3px;background:var(--sand)}
+.playing .eq i{animation:eq 1s infinite ease-in-out}.playing .eq i:nth-child(2){animation-delay:.25s}.playing .eq i:nth-child(3){animation-delay:.5s}
+@keyframes eq{50%{height:14px}}
+#vol{width:70px;accent-color:var(--sand);display:none}.playing~#vol{display:block}
+.ambwrap{display:flex;align-items:center;gap:.8rem}
+/* artist */
+.artist{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(2rem,6vw,6rem);align-items:center;margin-top:3rem}
+.artist .ph{aspect-ratio:4/5;margin-top:3rem}
+.artist dl{margin:2rem 0 0;display:grid;gap:1.3rem}
+.artist dt{font:500 .72rem var(--sans);letter-spacing:.15em;color:var(--sand)}
+.artist dd{margin:.2rem 0 0;max-width:52ch}
+@media(max-width:860px){.artist{grid-template-columns:1fr}}
+/* services */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.5rem;margin-top:3rem}
+.card{border:1px solid #2a2a2a;display:flex;flex-direction:column;transition:border-color .4s}
+.card:hover{border-color:var(--sand)}
+.card .ph{aspect-ratio:16/10;border:0}
+.card div.b{padding:1.4rem;display:flex;flex-direction:column;gap:.6rem;flex:1}
+.card h3{font-size:1.6rem}.card p{margin:0;font-size:.9rem;color:#b9b4a9;flex:1}
+.card a.l{font:500 .72rem var(--sans);letter-spacing:.15em;color:var(--sand)}
+/* music */
+.songs{margin-top:3rem;border-top:1px solid #2a2a2a}
+.song{display:grid;grid-template-columns:64px 1fr auto;gap:1.2rem;align-items:center;padding:1.2rem 0;border-bottom:1px solid #2a2a2a}
+.song .ph{width:64px;height:64px;padding:0;justify-content:center;align-items:center}
+.song h3{font-size:1.5rem}.song p{margin:.1rem 0 0;font-size:.85rem;color:#a39e93}
+.pbtn{width:46px;height:46px;border-radius:50%;border:1px solid var(--sand);background:none;color:var(--ivory);cursor:pointer;font-size:.9rem}
+.pbtn:hover,.song.on .pbtn{background:var(--sand);color:var(--ink)}
+.bar{grid-column:2/-1;height:2px;background:#2a2a2a;cursor:pointer;margin-top:.5rem}.bar i{display:block;height:100%;width:0;background:var(--sand)}
+.meta{font-size:.75rem;color:var(--smoke);display:flex;gap:1rem;flex-wrap:wrap;margin-top:.3rem}.meta a{color:var(--sand)}
+@media(max-width:600px){.song{grid-template-columns:52px 1fr auto}.song .ph{width:52px;height:52px}}
+/* gallery */
+.gal{columns:3 240px;column-gap:1rem;margin-top:3rem}
+.gal .ph{break-inside:avoid;margin-bottom:1rem;transition:transform .6s}.gal .ph:hover{transform:scale(1.015)}
+/* contact */
+#contratar{text-align:center;max-width:none;background:#171512}
+#contratar h2,#contratar>p{margin-inline:auto}
+.contact-row{display:flex;gap:1.6rem;justify-content:center;flex-wrap:wrap;margin:2rem 0 3rem;font-size:.8rem;letter-spacing:.12em}
+form{max-width:640px;margin:0 auto;display:grid;gap:1rem;text-align:left}
+form .two{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+label{font:500 .7rem var(--sans);letter-spacing:.14em;color:var(--sand);display:grid;gap:.4rem}
+input,select,textarea{background:transparent;border:0;border-bottom:1px solid #4a463f;color:var(--ivory);font:300 1rem var(--sans);padding:.6rem 0;border-radius:0}
+select option{background:var(--ink)}
+input:focus,select:focus,textarea:focus{outline:0;border-color:var(--sand)}
+@media(max-width:600px){form .two{grid-template-columns:1fr}}
+footer{border-top:1px solid #2a2a2a;padding:3rem clamp(1.25rem,5vw,4rem) calc(2rem + env(safe-area-inset-bottom,0px));display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;font-size:.8rem;color:#a39e93}
+footer nav{position:static;flex-direction:row;transform:none;visibility:visible;background:none;inset:auto;gap:1.2rem;font-size:.75rem;flex-wrap:wrap}
+.rv{opacity:0;transform:translateY(24px);transition:opacity 1s,transform 1s}.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv,.intro>*{opacity:1;transform:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header id="hd">
+  <a href="#hero" class="logo" data-bind="name">ARTIST NAME</a>
+  <button id="burger" aria-label="Abrir menú" aria-expanded="false">☰</button>
+  <nav id="nav" aria-label="Principal">
+    <a href="#artista">ARTISTA</a><a href="#servicios">SERVICIOS</a><a href="#musica">MÚSICA</a><a href="#galeria">GALERÍA</a>
+    <a href="#contratar" class="btn">CONTACTO</a>
+  </nav>
+</header>
+<main>
+<section id="hero" aria-label="Portada">
+  <video id="hv" muted loop playsinline autoplay preload="metadata" aria-hidden="true"></video>
+  <div class="hero-in intro">
+    <h1>Hay sonidos que se quedan contigo.</h1>
+    <p>Una guitarra, muchas emociones. Música en vivo desde Medellín.</p>
+    <div class="btns"><a class="btn solid" href="#musica">EXPLORAR MI MÚSICA</a><a class="btn" href="#contratar">CONTRATACIONES</a></div>
+  </div>
+  <div class="hero-foot">
+    <div class="ambwrap"><button id="amb" aria-pressed="false" aria-label="Activar música de ambiente"><span class="eq"><i></i><i></i><i></i></span><span id="ambt">ACTIVAR MÚSICA</span></button>
+    <input id="vol" type="range" min="0" max="100" value="30" aria-label="Volumen"></div>
+    <span>MEDELLÍN · COLOMBIA</span>
+    <span class="scroll" aria-hidden="true"></span>
+  </div>
+</section>
+
+<section id="artista">
+  <h2 class="rv">DETRÁS DE CADA NOTA, UNA HISTORIA.</h2>
+  <div class="artist rv">
+    <div class="ph" id="portrait">FOTO PROVISIONAL · reemplazar en CONTENT.artist.photo</div>
+    <dl id="artistDl"></dl>
+  </div>
+</section>
+
+<section id="servicios">
+  <h2 class="rv">MÚSICA PARA MOMENTOS QUE MERECEN SER RECORDADOS.</h2>
+  <div class="grid" id="svc"></div>
+</section>
+
+<section id="musica">
+  <h2 class="rv">ESCUCHA MI MUNDO.</h2>
+  <div class="songs" id="songs"></div>
+  <audio id="sa" preload="none"></audio>
+</section>
+
+<section id="galeria">
+  <h2 class="rv">Instantes en escena.</h2>
+  <div class="gal" id="gal"></div>
+</section>
+
+<section id="contratar">
+  <h2 class="rv">TU MOMENTO ESPECIAL MERECE SU PROPIA MELODÍA.</h2>
+  <p class="rv">Convirtamos tu celebración o evento en una experiencia musical especial.</p>
+  <div class="contact-row" id="links"></div>
+  <form id="qf" class="rv">
+    <label>NOMBRE<input name="n" required autocomplete="name"></label>
+    <div class="two">
+      <label>TIPO DE EVENTO<select name="t" id="evt"></select></label>
+      <label>FECHA<input type="date" name="d"></label>
+    </div>
+    <label>UBICACIÓN<input name="u" autocomplete="off"></label>
+    <label>MENSAJE<textarea name="m" rows="3"></textarea></label>
+    <button class="btn solid" type="submit">SOLICITAR COTIZACIÓN POR WHATSAPP</button>
+  </form>
+</section>
+</main>
+<footer>
+  <div><div class="logo" data-bind="name">ARTIST NAME</div><p>Medellín, Colombia<br>© <span id="yr"></span> <span data-bind="name">ARTIST NAME</span>. Todos los derechos reservados.</p></div>
+<nav aria-label="Pie"><a href="#artista">Artista</a><a href="#servicios">Servicios</a><a href="#musica">Música</a><a href="#galeria">Galería</a><a href="#contratar">Contratar</a></nav>
+  <div id="flinks"></div>
+</footer>
+
+<script>
+/* ===== CONTENIDO CENTRALIZADO · edita aquí (todo lo marcado PROVISIONAL es de ejemplo) ===== */
+const CONTENT={
+ name:"ARTIST NAME",                       // PROVISIONAL
+ whatsapp:"573234243890",                  // PROVISIONAL: código país + número
+ email:"hola@tudominio.com",               // PROVISIONAL
+ instagram:"https://instagram.com/",       // PROVISIONAL
+ youtube:"https://youtube.com/",           // PROVISIONAL
+ hero:{video:"public/video/video-musico1.mp4",poster:""},                // ruta a tu video (mp4/webm) y portada
+ ambientAudio:"public/audio/cancion-artista1.mp3"  ,                          // ruta a tu audio de ambiente; vacío = pad sintético provisional
+ artist:{photo:"public/img/imagen-musico.jpg",fields:[
+  ["Nombre artístico","Eddy Gael"],
+  ["Biografía","Licenciado en educación artística musical y cultural Universidad de Antioquia."],
+  ["Historia musical","Entre los años 2000 y 2006 hice parte del trio vocal “Sentimiento” como primera voz y guitarra. En el año 2006 fuí cofundador y director del grupo musical “Amalgama” cuya intención primordial fué estudiar y recrear la música en sus diversas manifestaciones o géneros, haciendo énfasis en la Música Andina Colombiana."],
+  ["Estilo musical","Música Andina Colombiana."]]},
+ services:[
+  ["Serenatas","Una declaración que se canta, con repertorio a tu medida."],
+  ["Matrimonios","Ceremonia y cóctel con guitarra en vivo."],
+  ["Eventos privados","Ambiente íntimo para cumpleaños y reuniones."],
+  ["Restaurantes y establecimientos","Música en vivo que acompaña la experiencia."],
+  ["Eventos corporativos","Presentaciones sobrias para marcas y equipos."],
+  ["Presentaciones personalizadas","Setlist diseñado para tu ocasión."],
+  ["Acompañamiento musical","Guitarra para voces, ceremonias y proyectos."]],
+ songs:[ // src/cover/links vacíos = demostración provisional
+  {t:"Canción original 1",d:"Pieza provisional. Describe aquí la historia de la canción.",dur:"3:24",src:"",cover:"",kind:"Original",links:{Spotify:"",YouTube:""}},
+  {t:"Interpretación 1",d:"Versión provisional. Indica el autor original si es un cover.",dur:"4:02",src:"",cover:"",kind:"Interpretación",links:{YouTube:""}},
+  {t:"Sesión acústica",d:"Grabación provisional en vivo.",dur:"2:48",src:"",cover:"",kind:"Original",links:{Spotify:""}}],
+ gallery:[["En vivo",300],["Sesión",220],["Retrato artístico",360],["Ensayo",240],["Evento",280],["Detrás de cámaras",230]] // PROVISIONAL
+};
+/* ===== utilidades ===== */
+const $=s=>document.querySelector(s),wa=t=>`https://wa.me/${CONTENT.whatsapp}?text=${encodeURIComponent(t)}`;
+document.querySelectorAll('[data-bind=name]').forEach(e=>e.textContent=CONTENT.name);
+$('#yr').textContent=new Date().getFullYear();
+/* ===== render ===== */
+$('#artistDl').innerHTML=CONTENT.artist.fields.map(([k,v])=>`<div><dt>${k.toUpperCase()}</dt><dd>${v}</dd></div>`).join('');
+if(CONTENT.artist.photo)Object.assign($('#portrait'),{innerHTML:`<img src="${CONTENT.artist.photo}" alt="Retrato del guitarrista" style="width:100%;height:100%;object-fit:cover">`}).style.padding=0;
+$('#svc').innerHTML=CONTENT.services.map(([t,d],i)=>`<article class="card rv"><div class="ph">IMAGEN PROVISIONAL</div><div class="b"><h3>${t}</h3><p>${d}</p><a class="l" target="_blank" rel="noopener" href="${wa('Hola, me interesa el servicio de '+t+'.')}">COTIZAR POR WHATSAPP</a></div></article>`).join('');
+$('#evt').innerHTML=CONTENT.services.map(s=>`<option>${s[0]}</option>`).join('')+'<option>Otro</option>';
+$('#songs').innerHTML=CONTENT.songs.map((s,i)=>`<div class="song rv" data-i="${i}"><div class="ph">${s.cover?`<img src="${s.cover}" alt="Portada de ${s.t}" width="64" height="64">`:'♪'}</div><div><h3>${s.t}</h3><p>${s.d}</p><div class="meta"><span>${s.kind}</span><span>${s.dur}</span>${Object.entries(s.links).map(([k,v])=>`<a ${v?`href="${v}" target="_blank" rel="noopener"`:'href="#musica"'}>${k}</a>`).join('')}</div></div><button class="pbtn" aria-label="Reproducir ${s.t}">▶</button><div class="bar"><i></i></div></div>`).join('');
+$('#gal').innerHTML=CONTENT.gallery.map(([t,h])=>`<div class="ph rv" style="height:${h}px">${t.toUpperCase()} · PROVISIONAL</div>`).join('');
+const L=[["WHATSAPP",wa('Hola, quiero cotizar música en vivo.')],["INSTAGRAM",CONTENT.instagram],["YOUTUBE",CONTENT.youtube],["CORREO","mailto:"+CONTENT.email]];
+$('#links').innerHTML=L.map(([k,u],i)=>`<a ${i==0?'class="btn solid"':''} href="${u}" target="_blank" rel="noopener">${k}</a>`).join('')+'<span class="muted">MEDELLÍN, COLOMBIA</span>';
+$('#flinks').innerHTML=L.slice(1).map(([k,u])=>`<a href="${u}" target="_blank" rel="noopener" style="margin-right:1rem">${k}</a>`).join('');
+/* ===== formulario → WhatsApp ===== */
+$('#qf').onsubmit=e=>{e.preventDefault();const f=new FormData(e.target);
+ const msg=`Hola, quiero una cotización.\n*Nombre:* ${f.get('n')}\n*Evento:* ${f.get('t')}\n*Fecha:* ${f.get('d')||'Por definir'}\n*Ubicación:* ${f.get('u')||'Por definir'}\n*Mensaje:* ${f.get('m')||'-'}`;
+ window.open(wa(msg),'_blank','noopener')};
+/* ===== menú, header, reveal ===== */
+const nav=$('#nav'),bg=$('#burger');
+const tog=o=>{nav.classList.toggle('open',o);bg.setAttribute('aria-expanded',o);bg.textContent=o?'✕':'☰'};
+bg.onclick=()=>tog(!nav.classList.contains('open'));nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>tog(false)));
+addEventListener('scroll',()=>$('#hd').classList.toggle('solid',scrollY>60),{passive:true});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.rv').forEach(e=>io.observe(e));
+/* ===== video hero (solo si hay fuente) ===== */
+const hv=$('#hv');
+if(CONTENT.hero.video){if(CONTENT.hero.poster)hv.poster=CONTENT.hero.poster;hv.src=CONTENT.hero.video;hv.addEventListener('canplay',()=>{hv.classList.add('on');hv.play().catch(()=>{})},{once:true})}
+/* ===== audio de ambiente (requiere clic) ===== */
+let ac,master,pad,amb=$('#amb'),ambAudio=null,ambOn=false;
+function startPad(){ // pad sintético PROVISIONAL (Am9 suave)
+ ac=ac||new (window.AudioContext||window.webkitAudioContext)();master=ac.createGain();master.gain.value=$('#vol').value/100*.3;master.connect(ac.destination);
+ pad=[110,164.81,220,261.63,329.63].map((f,i)=>{const o=ac.createOscillator(),g=ac.createGain();o.type='sine';o.frequency.value=f;g.gain.value=.18/(i+1);o.connect(g).connect(master);o.start();return o})}
+function setAmb(on){
+ ambOn=on;amb.parentElement.classList.toggle('playing',on);amb.setAttribute('aria-pressed',on);$('#ambt').textContent=on?'SILENCIAR':'ACTIVAR MÚSICA';
+ if(CONTENT.ambientAudio){if(!ambAudio){ambAudio=new Audio(CONTENT.ambientAudio);ambAudio.loop=true}ambAudio.volume=$('#vol').value/100;on?ambAudio.play().catch(()=>{}):ambAudio.pause()}
+ else{if(on){if(!pad)startPad();else{pad.forEach(o=>0);ac.resume()}}else if(ac)ac.suspend()}}
+amb.onclick=()=>{if(!ambOn)stopSong();setAmb(!ambOn)};
+$('#vol').oninput=e=>{const v=e.target.value/100;if(ambAudio)ambAudio.volume=v;if(master)master.gain.value=v*.3};
+/* ===== reproductor de canciones ===== */
+const sa=$('#sa');let cur=-1,tick=null,sim=0;
+function stopSong(){sa.pause();clearInterval(tick);document.querySelectorAll('.song').forEach(s=>{s.classList.remove('on');s.querySelector('.pbtn').textContent='▶'});cur=-1}
+document.querySelectorAll('.song').forEach(el=>{const i=+el.dataset.i,s=CONTENT.songs[i],btn=el.querySelector('.pbtn'),bar=el.querySelector('.bar'),fill=bar.firstElementChild;
+ const secs=(([m,x])=>m*60+ +x)(s.dur.split(':'));
+ btn.onclick=()=>{if(cur===i){stopSong();return}
+  stopSong();if(ambOn)setAmb(false);cur=i;el.classList.add('on');btn.textContent='❚❚';sim=0;
+  if(s.src){sa.src=s.src;sa.play().catch(()=>{});tick=setInterval(()=>{fill.style.width=(sa.currentTime/(sa.duration||1)*100)+'%'},250);sa.onended=stopSong}
+  else{if(!pad)startPad();ac.resume();master.gain.value=.12;tick=setInterval(()=>{sim++;fill.style.width=(sim/secs*100)+'%';if(sim>=secs)stopSong()},1000)}};
+ bar.onclick=e=>{const r=e.offsetX/bar.clientWidth;if(cur===i&&s.src)sa.currentTime=r*sa.duration;else if(cur===i)sim=r*secs}});
+</script>
+</body>
+</html>
